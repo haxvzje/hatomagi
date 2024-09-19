@@ -2,12 +2,12 @@ export default async function (output, _hist, ...args) {
   if (args.length) {
     const name = args[0];
     output.innerHTML += '<span data-color="orange">Opening Github...</span>';
-    window.open('https://github.com/SX-9/' + name);
+    window.open('https://github.com/haxvzje/' + name);
   } else {
     let repositories;
     try {
       repositories = await fetch(
-        "https://api.github.com/users/SX-9/repos?type=owner&sort=created"
+        "https://api.github.com/users/haxvzje/repos?type=owner&sort=created"
       ).then((r) => r.json());
     } catch (e) {
       output.innerHTML += '<span data-color="red">' + e + "</span>";
@@ -36,7 +36,7 @@ export default async function (output, _hist, ...args) {
     });
 
     output.innerHTML += `
-View More On My <span><a href="https://github.com/SX-9?tab=repositories">Github</a></span>\n
+View More On My <span><a href="https://github.com/haxvzje?tab=repositories">Github</a></span>\n
 `;
   }
 }

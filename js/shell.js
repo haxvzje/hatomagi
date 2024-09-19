@@ -1,18 +1,23 @@
 import { handle } from "./cmds.js";
 
 const msg = "Welcome To " + navigator.platform + "!";
-const welcome = `<div class="nomobile">
-          /\\    <span data-color="red">|></span>      <span data-color="lime">  ______                        ____                __</span>
-   <span data-color="red"><|</span>    /  \\<span data-color="orange">__</span>/ \\      <span data-color="lime"> /_  __/___   _____ ____ ___   / __ \\ ____   _____ / /_</span>
-   / \\<span data-color="orange">__</span>/<span data-color="orange">----</span>\\/   \\     <span data-color="lime">  / /  / _ \\ / ___// __ \`__ \\ / /_/ // __ \\ / ___// __/</span>
-  /<span data-color="orange">---</span>\\/      \\    \\    <span data-color="lime"> / /  /  __// /   / / / / / // ____// /_/ // /   / /_</span>
- /     \\       \\    \\   <span data-color="lime">/_/   \\___//_/   /_/ /_/ /_//_/     \\____//_/    \\__/</span>
-<span data-color="cyan"><~~~~~~~~~~~~~~~~~~~~></span>        <span data-color="grey">===> Terminal Portfolio | Made By <a href="https://new.sx9.is-a.dev">sx9dev</a></span></div>
 
-Type <span data-color="yellow">help</span> For List Of Available Commands
-<b><span data-color="red">NOTICE:</span></b> I Stand With <span data-color="yellow">Palestine</span> 🇵🇸 And <span data-color="lime">You Should Too!</span> <a href="https://donate.unrwa.org">Donate Here</a>
+const welcome = `<div class="nomobile">
+<span data-color="lime">
+██╗  ██╗<span data-color="pink">  █████╗ ████████╗ ██████╗ ███╗   ███╗ █████╗  ██████╗ ██╗</span>
+██║  ██║<span data-color="pink"> ██╔══██╗╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗██╔════╝ ██║</span>
+███████║<span data-color="pink"> ███████║   ██║   ██║   ██║██╔████╔██║███████║██║  ███╗██║</span>
+██╔══██║<span data-color="pink"> ██╔══██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██║██║   ██║██║</span>
+██║  ██║<span data-color="pink"> ██║  ██║   ██║   ╚██████╔╝██║ ╚═╝ ██║██║  ██║╚██████╔╝██║</span>
+╚═╝  ╚═╝<span data-color="pink"> ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝</span>                                                    
+===> haxvzje about me (cli website) | forked from <a href="https://github.com/SX-9/term-port">SX-9/term-port</a>                                        
+</span>
+</div>`;
+
+const welcome_help = `Type <span data-color="yellow">help</span> For List Of Available Commands
 
 `;
+
 const sleep = (m) => new Promise((r) => setTimeout(r, m));
 const terminal = document.querySelector("pre");
 const history = [];
@@ -23,7 +28,9 @@ setTimeout(async () => {
     terminal.innerText += msg[i];
     await sleep(100);
   }
+  await sleep(1500);
   terminal.innerHTML += welcome;
+  terminal.innerHTML += welcome_help;
   terminal.appendChild(prompt);
 }, 500);
 
@@ -42,8 +49,9 @@ window.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(".help")
         .forEach((el) => el.parentElement.remove());
 
+      await sleep(250);
       if (command.value.includes("&&")) {
-        let runs = command.value.split("&&");
+        let runs = command.value.split(" && ");
         for (let cmds of runs) {
           await handle(cmds, terminal, history);
           terminal.innerHTML += "\n";
