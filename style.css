@@ -19,9 +19,17 @@ label {
   scroll-behavior: smooth;
 }
 
+/* Catppuccin Macchiato defaults for CLI (dark) */
+:root {
+    --ct-text: #cad3f5;
+    --ct-base: #24273a;
+    --ct-overlay1: #8087a2;
+}
+
 body {
-    background-color: #010722;
-    overflow-x: hidden;
+        background-color: var(--ct-base);
+        color: var(--ct-text);
+        overflow-x: hidden;
 }
 
 *::selection {

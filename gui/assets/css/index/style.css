@@ -1,7 +1,11 @@
 /* index.html main page styles */
+html, body {
+    height: 100%;
+}
+
 body {
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0;
     background: var(--back-gif) center;
     background-image: url(../../images/bg.jpg);
@@ -10,16 +14,6 @@ body {
     display: flex;
     font-family: 'Gotham Pro';
 }
-
-/* customizable snowflake styling */
-.snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial;
-  text-shadow: 0 0 1px #000;
-}
-
-@-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%{-webkit-transform:translateX(0px);transform:translateX(0px)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}100%{-webkit-transform:translateX(0px);transform:translateX(0px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%{transform:translateX(0px)}50%{transform:translateX(80px)}100%{transform:translateX(0px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}
 
 #parallax {
   position: relative;
@@ -109,6 +103,26 @@ a.link {
     text-decoration: none;
     transition: .2s;
     border: var(--border);
+}
+
+button.link-button {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -moz-tap-highlight-color: rgba(0,0,0,0);
+    padding: 8px 20px;
+    margin: 4px;
+    background: var(--back-color);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    width: 256px;
+    text-align: center;
+    text-decoration: none;
+    transition: .2s;
+    border: var(--border);
+    font-family: 'Gotham Pro';
 }
 
 .avatar-container {
@@ -206,6 +220,139 @@ h2 {
     -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
     -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
     box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+}
+/* Snow toggle button (positioned by snow.js if created) */
+/* Unified top controls (music, snow, theme) */
+.top-control {
+    position: fixed;
+    top: 12px;
+    z-index: 10001;
+    font-family: 'Gotham Pro';
+    padding: 8px 12px;
+    height: 32px;
+    line-height: 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    background: rgba(36, 39, 58, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.snow-toggle {
+    right: 12px;
+}
+
+.theme-toggle {
+    right: 132px;
+}
+
+.theme-toggle--disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* Mini player styles */
+.mini-player {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 10000;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 14px;
+    min-width: 260px;
+    max-width: 360px;
+    border-radius: 14px;
+    background: rgba(36, 39, 58, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
+}
+
+.mini-player.is-hidden {
+    display: none;
+}
+.mini-player__artwork img {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    background: rgba(255, 255, 255, 0.08);
+}
+.mini-player__body {
+    display: grid;
+    gap: 6px;
+}
+.mini-player__title {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mini-player__artist {
+    font-size: 11px;
+    opacity: 0.75;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mini-player__controls {
+    display: flex;
+    gap: 8px;
+}
+.mini-player__controls button {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.mini-player__minimize {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.music-toggle {
+    left: 12px;
+}
+
+.music-toggle.is-hidden {
+    display: none;
+}
+.mini-player__controls button:active {
+    transform: translateY(1px);
+}
+.mini-player__timeline {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    gap: 8px;
+    align-items: center;
+    font-size: 10px;
+    opacity: 0.9;
+}
+.mini-player__timeline input[type="range"] {
+    width: 100%;
 }
 input[type=button] {
     -webkit-tap-highlight-color: rgba(0,0,0,0);

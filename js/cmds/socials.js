@@ -5,19 +5,19 @@ export default function(output, _hist, ...args) {
             window.open('https://github.com/haxvzje');
             break;
         case 'discord':
-            window.open('https://discord.gg/UKSsMcm575');
+            window.open('https://discord.com/users/787936379199291392');
             break;
         case 'twitter':
-            window.open('https://twitter.com/haxvzje');
+            window.open('https://x.com/haxvzje');
             break;
         case 'email':
             window.open('mailto:haxvzje@hatomagi.site');
             break;
         default:
             output.innerHTML += `\
-<span data-color="white">Github: <a href="https://github.com/haxvzje">@SX-9</a></span>
-<span data-color="MediumSlateBlue">Discord: <a href="https://discord.gg/UKSsMcm575">@ch1zuru_</a></span>
-<span data-color="cyan">Twitter: <a href="https://twitter.com/haxvzje">@haxvzje</a></span>
+<span data-color="white">Github: <a href="https://github.com/haxvzje">@haxvzje</a></span>
+<span data-color="MediumSlateBlue">Discord: <a href="https://discord.com/users/787936379199291392">@ch1zuru_</a></span>
+<span data-color="cyan">Twitter: <a href="https://x.com/haxvzje">@haxvzje</a></span>
 <span data-color="yellow">Email: <a href="mailto:haxvzje@hatomagi.site">haxvzje@hatomagi.site</a></span>
 
 `;

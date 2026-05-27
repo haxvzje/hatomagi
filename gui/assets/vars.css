@@ -1,10 +1,44 @@
 :root {
+    /* Project-specific variables (keep existing values where used) */
     --name: iNeoony;
-    --text-color: #fff;
-    --back-color: #fff3;
-    --over-color: #fefefe;
-    --popup-text-color: #000000;
-    --border: none;
     --pasxalka: https://www.t.me/iNeoonyNews;
     --has-pasxalka-work: 'true';
+
+    /* Catppuccin Macchiato (dark) tokens */
+    --ct-rosewater: #f4dbd6;
+    --ct-flamingo: #f0c6c6;
+    --ct-pink: #f5bde6;
+    --ct-mauve: #c6a0f6;
+    --ct-red: #ed8796;
+    --ct-maroon: #ee99a0;
+    --ct-peach: #f5a97f;
+    --ct-yellow: #eed49f;
+    --ct-green: #a6da95;
+    --ct-teal: #8bd5ca;
+    --ct-sky: #91d7e3;
+    --ct-sapphire: #7dc4e4;
+    --ct-blue: #8aadf4;
+    --ct-lavender: #b7bdf8;
+    --ct-text: #cad3f5;
+    --ct-subtext1: #b8c0e0;
+    --ct-subtext0: #a5adcb;
+    --ct-overlay2: #939ab7;
+    --ct-overlay1: #8087a2;
+    --ct-overlay0: #6e738d;
+    --ct-surface2: #5b6078;
+    --ct-surface1: #494d64;
+    --ct-surface0: #363a4f;
+    --ct-base: #24273a;
+    --ct-mantle: #1e2030;
+    --ct-crust: #181926;
+
+    /* Derived tokens used by the site */
+    --text-color: var(--ct-text);
+    --back-color: rgba(255,255,255,0.03);
+    --over-color: rgba(255,255,255,0.04);
+    --popup-text-color: #000000;
+    --border: 1px solid rgba(255,255,255,0.08);
+
+    /* Background image (kept for backward compatibility) */
+    --back-gif: url('../../images/bg.jpg');
 }
