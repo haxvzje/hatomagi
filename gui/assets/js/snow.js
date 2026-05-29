@@ -6,6 +6,7 @@
   function createCanvas() {
     canvas = document.createElement('canvas');
     canvas.id = 'snow-canvas';
+    canvas.className = 'snow-canvas';
     canvas.style.position = 'fixed';
     canvas.style.left = '0';
     canvas.style.top = '0';
@@ -22,6 +23,8 @@
     height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
   }
 
   function makeFlakes(count = 75) {
@@ -90,7 +93,9 @@
   function updateToggleUI(enabled) {
     let btn = document.querySelector('.snow-toggle');
     if (!btn) return;
-    btn.textContent = enabled ? '❄ Snow: On' : '❄ Snow: Off';
+    btn.innerHTML = enabled
+      ? '<i class="fa-solid fa-snowflake"></i> Snow: On'
+      : '<i class="fa-solid fa-snowflake"></i> Snow: Off';
   }
 
   // Initialize based on localStorage
@@ -106,6 +111,44 @@
     }
     updateToggleUI(stored);
     if (stored) start();
+
+    // create oneko toggle below snow button
+    const CAT_KEY = 'onekoEnabled';
+    let catBtn = document.querySelector('.oneko-toggle');
+    if (!catBtn) {
+      catBtn = document.createElement('button');
+      catBtn.className = 'oneko-toggle top-control';
+      document.body.appendChild(catBtn);
+    }
+
+    const catStored = JSON.parse(localStorage.getItem(CAT_KEY) || 'true');
+    const cat = document.getElementById('oneko');
+    if (cat) cat.style.display = catStored ? 'block' : 'none';
+    catBtn.innerHTML = catStored
+      ? '<i class="fa-solid fa-cat"></i> Cat: On'
+      : '<i class="fa-solid fa-cat"></i> Cat: Off';
+
+    catBtn.addEventListener('click', () => {
+      const current = JSON.parse(localStorage.getItem(CAT_KEY) || 'true');
+      const next = !current;
+      localStorage.setItem(CAT_KEY, JSON.stringify(next));
+      if (cat) cat.style.display = next ? 'block' : 'none';
+      catBtn.innerHTML = next
+        ? '<i class="fa-solid fa-cat"></i> Cat: On'
+        : '<i class="fa-solid fa-cat"></i> Cat: Off';
+    });
+
+    // create CLI button below cat
+    let cliBtn = document.querySelector('.cli-toggle');
+    if (!cliBtn) {
+      cliBtn = document.createElement('button');
+      cliBtn.className = 'cli-toggle top-control';
+      cliBtn.innerHTML = '<i class="fa-brands fa-arch-linux"></i> CLI';
+      document.body.appendChild(cliBtn);
+      cliBtn.addEventListener('click', () => {
+        window.location.href = '../index.html?mode=cli';
+      });
+    }
   }
 
   // Expose toggle globally for debugging

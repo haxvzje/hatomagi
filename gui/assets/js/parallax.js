@@ -29,7 +29,12 @@
         const _depth3 = `${50 - currentX * 100 * amp3}% ${50 - currentY * 100 * amp3}%`;
 
         const pos = `${_depth3}, ${_depth2}, ${_depth1}`;
-        document.body.style.backgroundPosition = pos;
+        const bg = document.querySelector('.bg-layer');
+        if (bg) {
+            bg.style.backgroundPosition = pos;
+        } else {
+            document.body.style.backgroundPosition = pos;
+        }
         requestAnimationFrame(animate);
     }
 

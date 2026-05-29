@@ -8,15 +8,23 @@
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#24273a">
 
-    <meta property="og:title" content="Hatomagi CLI — haxvzje">
+    <meta property="og:title" content="CLI Portfolio Page - Hatomagi">
     <meta property="og:description" content="Interactive CLI portfolio with Arch-like commands and a terminal-first vibe.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Hatomagi">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Hatomagi CLI — haxvzje">
+    <meta name="twitter:title" content="CLI Portfolio Page - Hatomagi">
     <meta name="twitter:description" content="Interactive CLI portfolio with Arch-like commands and a terminal-first vibe.">
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('mode') !== 'cli') {
+                window.location.replace('gui/index.html');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap">
     <script src="js/script.js" type="module" defer></script>
